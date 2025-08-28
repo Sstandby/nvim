@@ -23,6 +23,7 @@ return {
         "svelte",
         "python",
         "c_sharp",
+        "haskell",
       },
 
       -- matchup = {
