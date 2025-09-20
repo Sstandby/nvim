@@ -61,9 +61,12 @@ keymap.set("n", "<C-e>", function()
 end)
 
 -- Split window
-keymap.set("n", "ss", ":split<Return>", opts)
+keymap.set("n", "<leader>sh", ":split<CR>", opts) -- horizontal
+keymap.set("n", "<leader>sv", ":vsplit<CR>", opts) -- vertical
+keymap.set("n", "<leader>sc", ":close<CR>", opts) -- close split
 
-keymap.set("n", "sv", ":vsplit<Return>", opts)
+keymap.set("n", "<leader>se", "<C-w>=", opts) -- equalizes all sizes
+keymap.set("n", "<leader>so", ":only<CR>", opts) -- close all
 
 -- Move window
 keymap.set("n", "s<left>", "<C-w>h", opts)
@@ -72,10 +75,10 @@ keymap.set("n", "s<down>", "<C-w>j", opts)
 keymap.set("n", "s<right>", "<C-w>l", opts)
 
 -- Resize window
-keymap.set("n", "<C-w><right>", "<C-w><")
-keymap.set("n", "<C-w><left>", "<C-w>>")
+keymap.set("n", "<C-w><left>", "<C-w><")
+keymap.set("n", "<C-w><right>", "<C-w>>")
 keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><up>", "<C-w>-")
+keymap.set("n", "<C-w><down>", "<C-w>-")
 
 --  Tree
 keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", opts)
