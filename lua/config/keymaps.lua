@@ -35,7 +35,16 @@ keymap.set("n", "<leader>bd", ":bd<CR>", opts)
 keymap.set("n", "<leader>tc", ":tabclose<CR>", opts)
 
 -- Delete buffer wipeout
-keymap.set("n", "<Leader>w", ":bw<CR>", opts)
+keymap.set("n", "<Leader>w", function()
+  local buffers = vim.fn.getbufinfo({ buflisted = 1 })
+  if #buffers > 1 then
+    vim.cmd("bprev")
+  else
+    vim.cmd("bd")
+    vim.cmd("Neotree show")
+  end
+  vim.cmd("bd #")
+end, opts)
 
 -- harpoon tabs
 keymap.set("n", "<leader>a", function()

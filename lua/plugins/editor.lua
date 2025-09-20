@@ -192,26 +192,6 @@ return {
     end,
   },
   {
-    "kazhala/close-buffers.nvim",
-    event = "verylazy",
-    keys = {
-      {
-        "<leader>th",
-        function()
-          require("close_buffers").delete({ type = "hidden" })
-        end,
-        "close hidden buffers",
-      },
-      {
-        "<leader>tu",
-        function()
-          require("close_buffers").delete({ type = "nameless" })
-        end,
-        "close nameless buffers",
-      },
-    },
-  },
-  {
     "saghen/blink.cmp",
     opts = {
       completion = {
