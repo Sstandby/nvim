@@ -1,7 +1,7 @@
 return {
   {
     "echasnovski/mini.hipatterns",
-    event = "BufReadPre",
+    event = "bufreadpre",
     opts = {
       highlighters = {
         hsl_color = {
@@ -12,13 +12,13 @@ return {
   },
   {
     "dinhhuy258/git.nvim",
-    event = "BufReadPre",
+    event = "bufreadpre",
     opts = {
       keymaps = {
-        -- Open blame window
-        blame = "<Leader>gb",
-        -- Open file/folder in git repository
-        browse = "<Leader>go",
+        -- open blame window
+        blame = "<leader>gb",
+        -- open file/folder in git repository
+        browse = "<leader>go",
       },
     },
   },
@@ -33,13 +33,13 @@ return {
     },
     keys = {
       {
-        "<leader>fP",
+        "<leader>fp",
         function()
           require("telescope.builtin").find_files({
             cwd = require("lazy.core.config").options.root,
           })
         end,
-        desc = "Find Plugin File",
+        desc = "find plugin file",
       },
       {
         ";f",
@@ -50,7 +50,7 @@ return {
             hidden = true,
           })
         end,
-        desc = "Lists files in your current working directory, respects .gitignore",
+        desc = "lists files in your current working directory, respects .gitignore",
       },
       {
         ";r",
@@ -60,7 +60,7 @@ return {
             additional_args = { "--hidden" },
           })
         end,
-        desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+        desc = "search for a string in your current working directory and get results live as you type, respects .gitignore",
       },
       {
         "\\\\",
@@ -68,7 +68,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.buffers()
         end,
-        desc = "Lists open buffers",
+        desc = "lists open buffers",
       },
       {
         ";t",
@@ -76,7 +76,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.help_tags()
         end,
-        desc = "Lists available help tags and opens a new window with the relevant help info on <cr>",
+        desc = "lists available help tags and opens a new window with the relevant help info on <cr>",
       },
       {
         ";;",
@@ -84,7 +84,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.resume()
         end,
-        desc = "Resume the previous telescope picker",
+        desc = "resume the previous telescope picker",
       },
       {
         ";e",
@@ -92,7 +92,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.diagnostics()
         end,
-        desc = "Lists Diagnostics for all open buffers or a specific buffer",
+        desc = "lists diagnostics for all open buffers or a specific buffer",
       },
       {
         ";s",
@@ -100,7 +100,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.treesitter()
         end,
-        desc = "Lists Function names, variables, from Treesitter",
+        desc = "lists function names, variables, from treesitter",
       },
       {
         ";c",
@@ -108,7 +108,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.lsp_incoming_calls()
         end,
-        desc = "Lists LSP incoming calls for word under the cursor",
+        desc = "lists lsp incoming calls for word under the cursor",
       },
       {
         "sf",
@@ -128,7 +128,7 @@ return {
             layout_config = { height = 40 },
           })
         end,
-        desc = "Open File Browser with the path of the current buffer",
+        desc = "open file browser with the path of the current buffer",
       },
     },
     config = function(_, opts)
@@ -165,23 +165,23 @@ return {
           -- your custom insert mode mappings
           ["n"] = {
             -- your custom normal mode mappings
-            ["N"] = fb_actions.create,
+            ["n"] = fb_actions.create,
             ["h"] = fb_actions.goto_parent_dir,
             ["/"] = function()
               vim.cmd("startinsert")
             end,
-            ["<C-u>"] = function(prompt_bufnr)
+            ["<c-u>"] = function(prompt_bufnr)
               for i = 1, 10 do
                 actions.move_selection_previous(prompt_bufnr)
               end
             end,
-            ["<C-d>"] = function(prompt_bufnr)
+            ["<c-d>"] = function(prompt_bufnr)
               for i = 1, 10 do
                 actions.move_selection_next(prompt_bufnr)
               end
             end,
-            ["<PageUp>"] = actions.preview_scrolling_up,
-            ["<PageDown>"] = actions.preview_scrolling_down,
+            ["<pageup>"] = actions.preview_scrolling_up,
+            ["<pagedown>"] = actions.preview_scrolling_down,
           },
         },
       }
@@ -193,21 +193,21 @@ return {
   },
   {
     "kazhala/close-buffers.nvim",
-    event = "VeryLazy",
+    event = "verylazy",
     keys = {
       {
         "<leader>th",
         function()
           require("close_buffers").delete({ type = "hidden" })
         end,
-        "Close Hidden Buffers",
+        "close hidden buffers",
       },
       {
         "<leader>tu",
         function()
           require("close_buffers").delete({ type = "nameless" })
         end,
-        "Close Nameless Buffers",
+        "close nameless buffers",
       },
     },
   },
