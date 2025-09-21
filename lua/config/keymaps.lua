@@ -36,6 +36,30 @@ for i = 1, 9 do
   keymap.set("n", "<C-" .. i .. ">", ":tabnext " .. i .. "<CR>", { desc = "Workspace " .. i })
 end
 
+keymap.set("n", "<leader>tp", function()
+  require("telescope.builtin").find_files({
+    prompt_title = "Abrir en nuevo workspace",
+    cwd = vim.fn.expand("~"),
+    find_command = { "find", ".", "-type", "f", "-not", "-path", "*/.*" },
+    attach_mappings = function(prompt_bufnr, map)
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+
+      map("i", "<CR>", function()
+        local entry = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        local file_path = entry.path or entry.value
+        local dir_path = vim.fn.fnamemodify(file_path, ":h")
+
+        vim.cmd("tabnew " .. vim.fn.fnameescape(file_path))
+        vim.cmd("tcd " .. vim.fn.fnameescape(dir_path))
+      end)
+      return true
+    end,
+  })
+end, { desc = "Workspace desde archivo" })
+
 -- Navigation buffer
 keymap.set("n", "bn", ":bnext<CR>", opts)
 keymap.set("n", "bp", ":bprev<CR>", opts)
