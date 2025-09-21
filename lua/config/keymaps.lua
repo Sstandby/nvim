@@ -15,9 +15,6 @@ harpoon:setup()
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
 
--- Delete a word backwords
-keymap.set("n", "dw", "vb_d")
-
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
