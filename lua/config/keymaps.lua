@@ -46,6 +46,12 @@ keymap.set("n", "<Leader>w", function()
   vim.cmd("bd #")
 end, opts)
 
+-- Delete word operations
+keymap.set("n", "<leader>dw", "daw", opts) -- delete entire word
+keymap.set("n", "<leader>dW", "daW", opts) -- delete entire WORD (including symbols)
+keymap.set("n", "<leader>de", "de", opts) -- delete from cursor to end of word
+keymap.set("n", "<leader>dE", "dE", opts) -- delete from cursor to end of WORD
+
 -- harpoon tabs
 keymap.set("n", "<leader>a", function()
   harpoon:list():add()
