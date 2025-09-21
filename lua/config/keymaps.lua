@@ -124,3 +124,6 @@ keymap.set("n", "<C-w><down>", "<C-w>-")
 --  Tree
 keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", opts)
 keymap.set("n", "<leader>E", "<cmd>Neotree focus<cr>", opts)
+
+-- Ray
+keymap.set("v", "<leader>rs", ":Rayso<CR>", { desc = "Screenshot code" })
