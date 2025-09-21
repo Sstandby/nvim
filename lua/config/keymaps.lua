@@ -21,15 +21,24 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 -- Jumlist
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
--- New tab
-keymap.set("n", "te", ":tabedit<CR>", opts)
-keymap.set("n", "<tab>", ":tabnext<CR>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<CR>", opts)
+-- Close tab
+keymap.set("n", "<leader>tc", ":tabclose<CR>", opts)
 
+-- New tab
+keymap.set("n", "<leader>tn", ":tabnew<CR>", { desc = "Nuevo workspace" })
+keymap.set("n", "<leader>to", ":tabonly<CR>", { desc = "Cerrar otros workspaces" })
+keymap.set("n", "te", ":tabedit<CR>", opts)
+
+-- Navigation tabs
+keymap.set("n", "<A-h>", ":tabprev<CR>", opts)
+keymap.set("n", "<A-l>", ":tabnext<CR>", opts)
+for i = 1, 9 do
+  keymap.set("n", "<A-" .. i .. ">", ":tabnext " .. i .. "<CR>", { desc = "Workspace " .. i })
+end
+
+-- Navigation buffer
 keymap.set("n", "bn", ":bnext<CR>", opts)
 keymap.set("n", "bp", ":bprev<CR>", opts)
-keymap.set("n", "<leader>bd", ":bd<CR>", opts)
-keymap.set("n", "<leader>tc", ":tabclose<CR>", opts)
 
 -- Delete buffer wipeout
 keymap.set("n", "<Leader>w", function()
