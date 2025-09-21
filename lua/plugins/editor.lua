@@ -1,6 +1,6 @@
 return {
   {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     event = "bufreadpre",
     opts = {
       highlighters = {

@@ -52,6 +52,11 @@ keymap.set("n", "<leader>dW", "daW", opts) -- delete entire WORD (including symb
 keymap.set("n", "<leader>de", "de", opts) -- delete from cursor to end of word
 keymap.set("n", "<leader>dE", "dE", opts) -- delete from cursor to end of WORD
 
+-- BufferLines
+for i = 1, 9 do
+  keymap.set("n", "<leader>" .. i, "<Cmd>BufferLineGoToBuffer " .. i .. "<CR>", opts)
+end
+
 -- harpoon tabs
 keymap.set("n", "<leader>a", function()
   harpoon:list():add()
