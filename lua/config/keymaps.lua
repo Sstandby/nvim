@@ -30,10 +30,10 @@ keymap.set("n", "<leader>to", ":tabonly<CR>", { desc = "Cerrar otros workspaces"
 keymap.set("n", "te", ":tabedit<CR>", opts)
 
 -- Navigation tabs
-keymap.set("n", "<A-h>", ":tabprev<CR>", opts)
-keymap.set("n", "<A-l>", ":tabnext<CR>", opts)
+keymap.set("n", "<C-Left>", ":tabprev<CR>", opts)
+keymap.set("n", "<C-Right>", ":tabnext<CR>", opts)
 for i = 1, 9 do
-  keymap.set("n", "<A-" .. i .. ">", ":tabnext " .. i .. "<CR>", { desc = "Workspace " .. i })
+  keymap.set("n", "<C-" .. i .. ">", ":tabnext " .. i .. "<CR>", { desc = "Workspace " .. i })
 end
 
 -- Navigation buffer
