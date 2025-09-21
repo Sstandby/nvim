@@ -116,10 +116,10 @@ keymap.set("n", "s<down>", "<C-w>j", opts)
 keymap.set("n", "s<right>", "<C-w>l", opts)
 
 -- Resize window
-keymap.set("n", "<C-w><left>", "<C-w><")
-keymap.set("n", "<C-w><right>", "<C-w>>")
-keymap.set("n", "<C-w><up>", "<C-w>+")
-keymap.set("n", "<C-w><down>", "<C-w>-")
+keymap.set("n", "<C-w><right>", "<C-w><")
+keymap.set("n", "<C-w><left>", "<C-w>>")
+keymap.set("n", "<C-w><down>", "<C-w>+")
+keymap.set("n", "<C-w><up>", "<C-w>-")
 
 --  Tree
 keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>", opts)
