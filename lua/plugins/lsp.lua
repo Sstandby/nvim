@@ -1,6 +1,4 @@
-local prismals = require("lspconfig.configs.prismals")
 return {
-  -- tools
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
@@ -17,12 +15,10 @@ return {
     end,
   },
 
-  -- lsp servers
   {
     "neovim/nvim-lspconfig",
     opts = {
       inlay_hints = { enabled = false },
-      ---@type lspconfig.options
       servers = {
         prismals = {},
         cssls = {},
@@ -70,7 +66,6 @@ return {
           },
         },
         lua_ls = {
-          -- enabled = false,
           single_file_support = true,
           settings = {
             Lua = {
@@ -82,9 +77,7 @@ return {
                 callSnippet = "Both",
               },
               misc = {
-                parameters = {
-                  -- "--log-level=trace",
-                },
+                parameters = {},
               },
               hint = {
                 enable = true,
@@ -102,7 +95,6 @@ return {
               },
               diagnostics = {
                 disable = { "incomplete-signature-doc", "trailing-space" },
-                -- enable = false,
                 groupSeverity = {
                   strong = "Warning",
                   strict = "Warning",
@@ -137,22 +129,14 @@ return {
       },
       setup = {},
     },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      vim.list_extend(keys, {
-        {
-          "gd",
-          function()
-            -- DO NOT RESUSE WINDOW
-            require("telescope.builtin").lsp_definitions({ reuse_win = false })
-          end,
-          desc = "Goto Definition",
-          has = "definition",
-        },
-      })
-    end,
+    keys = {
+      {
+        "gd",
+        function()
+          require("telescope.builtin").lsp_definitions({ reuse_win = false })
+        end,
+        desc = "Goto Definition",
+      },
+    },
   },
 }
