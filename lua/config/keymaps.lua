@@ -109,6 +109,11 @@ keymap.set("n", "<leader>sc", ":close<CR>", opts) -- close split
 keymap.set("n", "<leader>se", "<C-w>=", opts) -- equalizes all sizes
 keymap.set("n", "<leader>so", ":only<CR>", opts) -- close all
 
+-- Move Split
+for i = 1, 9 do
+  keymap.set("n", "<leader>" .. i .. "w", i .. "<C-w>w", { desc = "Go to window " .. i })
+end
+
 -- Move window
 keymap.set("n", "s<left>", "<C-w>h", opts)
 keymap.set("n", "s<up>", "<C-w>k", opts)

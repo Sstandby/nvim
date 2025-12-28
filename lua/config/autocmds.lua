@@ -20,3 +20,25 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.conceallevel = 0
   end,
 })
+
+-- Window numbers in winbar
+local function update_all_winbars()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    pcall(function()
+      if vim.api.nvim_win_is_valid(win) and vim.api.nvim_win_get_config(win).relative == "" then
+        local bufnr = vim.api.nvim_win_get_buf(win)
+        local filetype = vim.bo[bufnr].filetype
+        if filetype ~= "neo-tree" and filetype ~= "neo-tree-popup" and filetype ~= "notify" then
+          vim.wo[win].winbar = "%#WinBar# " .. vim.api.nvim_win_get_number(win)
+        end
+      end
+    end)
+  end
+end
+
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
+  group = vim.api.nvim_create_augroup("winbar_numbers", { clear = true }),
+  callback = update_all_winbars,
+})
+
+vim.defer_fn(update_all_winbars, 100)
